@@ -7,8 +7,10 @@ class HomeController {
     public function index(){
         
 
-        $HomeModel = new \App\Model\HomeModel();  
+        $HomeModel = new \App\Model\HomeModel();
+
         $wikis = $HomeModel->getWiki();
+        $categories = $HomeModel->getCategories();
         include_once '../app/View/home.php';
 
     }

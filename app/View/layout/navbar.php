@@ -5,12 +5,25 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link navigation" href="about.html">About</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a class="nav-link ml-5 navigation" href="contact.html" >Contact</a>
 					</li>
+					<li class="nav-item pt-1">
+						<select class="form-select" aria-label="Default select example">
+							<option selected>Categories</option>
+						    <?php foreach ($categories as $categorie):?>
+								
+								<option value="<?php echo $categorie->category_id ; ?>"><?php echo $categorie->category_name; ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+
+					</li>
+					
+
 					<li class="nav-item">
 						<form class="d-flex" style="padding-top: 5px;">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

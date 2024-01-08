@@ -69,11 +69,23 @@ class HomeModel{
     }
 
     public function getWiki(){
-        $sql = "SELECT * FROM wikis";
+        $sql = "SELECT wikis.*, utilisateurs.username AS author_name FROM wikis
+                JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id";
+        
         $stmt = $this->db->getConnection()->prepare($sql);
         $stmt->execute();
+        
         $wikis = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $wikis;
+    }
+
+
+    public function getCategories(){
+        $sql = "SELECT * FROM categories";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $categories;
     }
 
 

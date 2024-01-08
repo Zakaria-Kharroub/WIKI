@@ -60,27 +60,8 @@
 
 
 
-
 <?php foreach ($wikis as $wiki):?>
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="./asset/images/img-slide-1.jpg" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $wiki->title; ?></h5>
-                    <p class="card-text"><?php echo $wiki->description; ?></p>
-                    <p class="card-text"><small class="text-muted"><?php echo $wiki->date_create; ?></small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
-
-
-
-<section class="about section-padding" id="about">
+    <section class="about m-5" id="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-12 col-12">
@@ -88,37 +69,21 @@
 				</div>
 				<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
 					<div class="about-text">
-						<h2>Nous fournissons les meilleurs services de <br>
-                qualité jamais créés</h2>
+						<h2><?php echo $wiki->title; ?> <br> </h2>
 							
-						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
+						<h5><?php echo $wiki->description; ?></h5>
+            <p>ajouter a : <em style="color:brown;"><?php echo $wiki->date_create; ?></em><br>
+            par : <b style="color:brown;"><?php echo $wiki->author_name; ?></b>
+            </p>
             <button class="btn btn-danger">voir</button>
 					</div>
 				</div>
 		</div>
  </div>      
 </section>
+<?php endforeach; ?>
 
 
-
-<section class="about section-padding" id="about">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-12 col-12">
-					<div class="about-img"><img alt="" class="img-fluid" src="./asset/images/img-slide-1.jpg"></div>
-				</div>
-				<div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
-					<div class="about-text">
-						<h2>Nous fournissons les meilleurs services de <br>
-                            qualité jamais créés</h2>
-							
-						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
-            <button class="btn btn-danger" >voir</button>
-					</div>
-				</div>
-		</div>
- </div>      
-</section>
 
 
 
