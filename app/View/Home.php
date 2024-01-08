@@ -72,7 +72,9 @@
 						<h2><?php echo $wiki->title; ?> <br> </h2>
 							
 						<h5><?php echo $wiki->description; ?></h5>
-            <p>ajouter a : <em style="color:brown;"><?php echo $wiki->date_create; ?></em></p>
+            <p>ajouter a : <em style="color:brown;"><?php echo $wiki->date_create; ?></em><br>
+            par : <b style="color:brown;"><?php echo $wiki->author_name; ?></b>
+            </p>
             <button class="btn btn-danger">voir</button>
 					</div>
 				</div>
