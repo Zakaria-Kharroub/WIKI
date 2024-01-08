@@ -80,4 +80,13 @@ class HomeModel{
     }
 
 
+    public function getCategories(){
+        $sql = "SELECT * FROM categories";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $categories;
+    }
+
+
 }
