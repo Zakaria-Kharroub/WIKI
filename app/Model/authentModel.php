@@ -9,71 +9,76 @@ use PDO ;
 
 class AuthentModel {
     private $db;
-
-    protected $name;
+    protected $username;
     protected $email;
     protected $password;
     protected $id_role;
+
 
     public function __construct() {
         $this->db = new Database();
     }
 
-    public function getName() {
-        return $this->name;
+    
+    public function getUsername() {
+        return $this->username;
     }
-    public function getEmail() {
+
+    public function getEmail(){
         return $this->email;
     }
-    public function getPassword() {
+    public function getPassword(){
         return $this->password;
     }
     public function getIdRole(){
-        return $this->id_role=$id_role;
+        return $this->id_role;
     }
 
-    public function setName($name) {
-        $this->name = $name;
+
+    public function setUsername($username) {
+        $this->username = $username;
     }
-    public function setEmail($email) {
-        $this->email = $email;
-    } 
-    public function setPassword($password) {
-        $this->password = $password;
+    public function setEmail($email){
+        $this->email= $email;
+    }
+    public function setPassword($password){
+        $this->password =$password;
     }
     public function setIdRole($id_role){
         $this->id_role=$id_role;
     }
 
-
-    public function register(){
-        $query= "INSERT INTO `utilisateurs`( `name`, `email`, `password`, `ID_Role`) VALUES  (?,?,?,?)";
+    public function register() {
+        $query = "INSERT INTO `utilisateurs` (`username`, `email`, `password`, `role_id`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->getConnection()->prepare($query);
-        $stmt ->execute([$this->getName(),$this->getEmail(),$this->getPassword(),1]);
-        if($stmt){
+        $hashedPassword = password_hash($this->getPassword(), PASSWORD_DEFAULT);
+        $stmt->execute([$this->getUsername(), $this->getEmail(), $hashedPassword, 2]);
+        if ($stmt) {
             return true;
-        }   
-     
-    }
-
-
-    public function login(){
-        $query = "SELECT * FROM `utilisateurs` WHERE email = ? AND password = ?";
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->execute([$this->getEmail(),$this->getPassword()]);
-        $user = $stmt->fetch(PDO::FETCH_OBJ);
-        // var_dump($user);
-        
-            $_SESSION['id'] = $user->id;
-            $_SESSION['name'] = $user->name;
-            $_SESSION['email']=$user->email;
-            // var_dump($_SESSION);
-           
-            
-            return true;
+        }
     }
     
 
+    public function login(){
+        $query = "SELECT * FROM `utilisateurs` WHERE email = :email";
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(':email', $this->getEmail());
+        $stmt->execute();
+    
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+    
+        if ($user && password_verify($this->getPassword(), $user->password)) {
+            $_SESSION['id'] = $user->user_id; 
+            $_SESSION['username'] = $user->username;
+            // $_SESSION['email'] = $user->email;
+    
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
 
     
 }
