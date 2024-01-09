@@ -39,7 +39,7 @@
                 <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                 <input type="password" class="form-control" name="password" id="password"  placeholder="entrez le mot de pass" required>
               </div>
-              <input type="hidden" name="id_role" value="2">
+              <!-- <input type="hidden" name="id_role" value="2"> -->
               <div class="col-12">
                 <div class="d-grid">
                   <button class="btn btn-lg btn-danger" type="submit" name="submit">register</button>
