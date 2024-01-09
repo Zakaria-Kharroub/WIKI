@@ -18,9 +18,20 @@ class loginController {
             $login->setPassword($password);
             $isLoginSuccessful = $login->login();
             if($isLoginSuccessful){
-                header('location:?uri=home');
+                
+                // header('location:?uri=home');
+                if($_SESSION['role_id'] == 1){
+                    header('location:?uri=admin');
+                }
+                else{
+                    header('location:?uri=home');
+                }
+            }
+            else{
+                header('location:?uri=login');
             }
         }
+        
     }
 
 
