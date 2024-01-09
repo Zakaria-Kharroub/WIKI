@@ -55,6 +55,9 @@
   </button>
 </div>
 <!-- end carousel -->
+<h1>welcome back</h1>
+<?php ?>
+  
 
 
 

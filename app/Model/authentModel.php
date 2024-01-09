@@ -52,7 +52,7 @@ class AuthentModel {
         $query = "INSERT INTO `utilisateurs` (`username`, `email`, `password`, `role_id`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->getConnection()->prepare($query);
         $hashedPassword = password_hash($this->getPassword(), PASSWORD_DEFAULT);
-        $stmt->execute([$this->getUsername(), $this->getEmail(), $hashedPassword, 1]);
+        $stmt->execute([$this->getUsername(), $this->getEmail(), $hashedPassword, 2]);
         if ($stmt) {
             return true;
         }
