@@ -58,6 +58,26 @@ class AuthentModel {
         }
     }
     
+
+    public function login(){
+        $query = "SELECT * FROM `utilisateurs` WHERE email = :email";
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(':email', $this->getEmail());
+        $stmt->execute();
+    
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+    
+        if ($user && password_verify($this->getPassword(), $user->password)) {
+            $_SESSION['id'] = $user->user_id; 
+            $_SESSION['username'] = $user->username;
+            // $_SESSION['email'] = $user->email;
+    
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
 
     
