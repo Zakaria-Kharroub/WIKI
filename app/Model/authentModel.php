@@ -70,6 +70,7 @@ class AuthentModel {
         if ($user && password_verify($this->getPassword(), $user->password)) {
             $_SESSION['id'] = $user->user_id; 
             $_SESSION['username'] = $user->username;
+            $_SESSION['role_id'] = $user->role_id;
             // $_SESSION['email'] = $user->email;
     
             return true;
@@ -77,6 +78,11 @@ class AuthentModel {
             return false;
         }
     }
+    
+    public function logout(){
+        session_destroy();
+    }
+
 
     
 

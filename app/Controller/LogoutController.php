@@ -1,8 +1,14 @@
 <?php
+namespace App\Controller;
+
 
  class LogoutController{
     public function index(){
-        session_destroy();
-        header('location:?uri=login');
+        header('location:?uri=home');
+    }
+    public function logout(){
+        $logout = new \App\Model\AuthentModel();
+        $logout->logout();
+        header('location:?uri=home');
     }
 }

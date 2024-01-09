@@ -30,12 +30,60 @@
                             <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                           </form>
 					</li>
-                    <li class="nav-item">
+
+
+					<!-- check session -->
+					<?php if (isset($_SESSION['id'])){
+						// var_dump($_SESSION);
+						// echo "id : ".$_SESSION['id']."<br>";
+						// echo "name : ".$_SESSION['username']."<br>";
+						// echo "le role : ".$_SESSION['role_id']."<br>";
+						// echo '<li class="nav-item">';
+						// echo '<a class="nav-link ml-5 navigation" href="?uri=/logout" >logout</a>';
+						// echo '</li>';
+						?>
+
+
+
+                  
+
+					<div class="dropdown mt-1 ms-2">
+						<a class="btn btn-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+							<?php echo $_SESSION['username']; ?>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="#">profile</a></li>
+							<li><a class="dropdown-item" href="#">add wiki</a></li>
+							<li><a class="dropdown-item" href="?uri=/logout/logout">Log out</a></li>
+						</ul>
+					</div>
+
+
+
+						<?php
+					}
+					else{
+						?>
+						<li class="nav-item">
+						    <a class="nav-link ml-5 navigation" href="?uri=/login" >login</a>
+					    </li>
+					    <li class="nav-item">
+						    <a class="nav-link ml-5 navigation" href="?uri=/register" >register</a>
+					    </li>
+				 <?php } ?>
+						
+
+					
+
+
+
+					
+                    <!-- <li class="nav-item">
 						<a class="nav-link ml-5 navigation" href="?uri=/login" >login</a>
 					</li>
                     <li class="nav-item">
 						<a class="nav-link ml-5 navigation" href="?uri=/register" >register</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
