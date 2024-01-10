@@ -31,19 +31,22 @@
                     </thead>
 
                     <tbody>
+                     <?php foreach ($wikis as $wiki):?>
                         <tr>
-                            <td>openai</td>
+                            <td><?php echo $wiki->title; ?></td>
                             <td>Lorem</td>
-                            <td>david</td>
-                            <td>technologie</td>
-                            <td>2024-01-09</td>
-                            <td>non</td>
+                            <td><?php echo $wiki->author_name; ?></td>
+                            <td><?php echo $wiki->category_name; ?></td>
+                            <td><?php echo $wiki->date_create; ?></td>
+                            <td><?php echo $wiki->etat; ?></td>
                         </tr>
+                        <?php endforeach; ?>
                        
                     </tbody>
                 </table>
             </div>
     </section>
+    
 
      <!-- bootstrap cdn -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
