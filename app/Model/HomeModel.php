@@ -5,7 +5,7 @@ use App\Database\Database;
 use PDO ;
 
 class HomeModel{
-    private $db;
+    protected $db;
     protected $id ;
     protected $title ;
     protected $description;
@@ -13,6 +13,7 @@ class HomeModel{
     protected $author_id;
     protected $category_id;
     protected $date_create;
+    protected $etat;
 
 
 
@@ -43,6 +44,9 @@ class HomeModel{
     public function getDateCreate(){
         return $this->date_create;
     }
+    public function getEtat(){
+        return $this->etat;
+    }
 
     // seters
 
@@ -66,6 +70,9 @@ class HomeModel{
     }
     public function setDateCreate($date_create){
         $this->date_create=$date_create;
+    }
+    public function setEtat($etat){
+        $this->etat=$etat;
     }
 
  

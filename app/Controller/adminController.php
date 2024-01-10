@@ -10,6 +10,8 @@ class adminController{
 
 
     public function categorie(){
+        // var_dump($_SERVER['REQUEST_METHOD']);
+        //     die();
         $adminModel = new \App\Model\AdminModel();
         $categories = $adminModel->sameCategories();
         include_once '../app/View/admin/categorie.php';
@@ -26,11 +28,38 @@ class adminController{
 
 
     public function wikiAdmin(){
-
         $adminModel = new \App\Model\AdminModel();
         $wikis = $adminModel->sameWiki();
         include_once '../app/View/admin/wikiAdmin.php';
     }
+
+    public function ajouterTages(){
+
+    }
+
+    // old code 
+public function ajouterCategories(){
+    if(isset($_POST['submit'])){
+        $category_name = $_POST['category_name'];
+        $adminModel = new \App\Model\AdminModel();
+        $adminModel->setCategoryName($category_name);
+        if($adminModel->ajouterCategorie()){
+            header('Location: /wiki/public/admin?uri=admin/categorie');
+            exit();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
