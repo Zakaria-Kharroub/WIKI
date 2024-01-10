@@ -27,14 +27,13 @@
                     </thead>
 
                     <tbody>
+                    <?php foreach ($categories as $categorie):?>
+
                         <tr>
-                            <td>1</td>
-                            <td>technology</td>    
+                            <td><?php echo $categorie->category_id; ?></td>
+                            <td><?php echo $categorie->category_name; ?></td>    
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>history</td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
 
