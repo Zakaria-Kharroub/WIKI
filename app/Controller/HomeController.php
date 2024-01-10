@@ -28,6 +28,9 @@ class HomeController {
     public function logout(){
         header('location:?uri=home');
     }
+    public function categorie(){
+        include_once '../app/View/categorie.php';
+    }
 
 
 
