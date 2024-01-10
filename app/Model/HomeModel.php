@@ -5,7 +5,7 @@ use App\Database\Database;
 use PDO ;
 
 class HomeModel{
-    private $db;
+    protected $db;
     protected $id ;
     protected $title ;
     protected $description;
@@ -13,15 +13,16 @@ class HomeModel{
     protected $author_id;
     protected $category_id;
     protected $date_create;
+    protected $etat;
 
 
 
-//    geters
+
     public function __construct() {
         $this->db = new Database();
     }
 
-
+//    geters
     public function getId(){
         return $this->id;
     }
@@ -42,6 +43,9 @@ class HomeModel{
     }
     public function getDateCreate(){
         return $this->date_create;
+    }
+    public function getEtat(){
+        return $this->etat;
     }
 
     // seters
@@ -67,10 +71,16 @@ class HomeModel{
     public function setDateCreate($date_create){
         $this->date_create=$date_create;
     }
+    public function setEtat($etat){
+        $this->etat=$etat;
+    }
 
+ 
     public function getWiki(){
-        $sql = "SELECT wikis.*, utilisateurs.username AS author_name FROM wikis
-                JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id";
+        $sql = "SELECT wikis.*, utilisateurs.username AS author_name, categories.category_name
+                FROM wikis
+                JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id
+                JOIN categories ON wikis.category_id = categories.category_id";
         
         $stmt = $this->db->getConnection()->prepare($sql);
         $stmt->execute();
@@ -86,6 +96,15 @@ class HomeModel{
         $stmt->execute();
         $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $categories;
+    }
+
+    public function getTags(){
+        $sql = "SELECT * FROM tags";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        $tags = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $tags;
+
     }
 
 

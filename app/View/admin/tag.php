@@ -26,14 +26,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($tags as $tag): ?>
                         <tr>
-                            <td>1</td>
-                            <td>programming</td>    
+                            <td><?php echo $tag->tag_id; ?></td>
+                            <td><?php echo $tag->tag_name; ?></td>    
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>design</td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                                 
