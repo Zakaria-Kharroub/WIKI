@@ -131,6 +131,31 @@ public function ajoutertag(){
 }
 
 
+public function deleteTag(){
+    $sql = "DELETE FROM `tags` WHERE tag_id = ?";
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->execute([$this->getIdTag()]);
+    if($stmt){
+        header('Location: /wiki/public/admin?uri=admin/tag');
+        exit();
+    }else{
+        echo "error de delete";
+    }
+}
+
+public function updateTag(){
+    $sql = "UPDATE `tags` SET `tag_name`=? WHERE tag_id = ?";
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->execute([$this->getTagName(),$this->getIdTag()]);
+    if($stmt){
+        header('Location: /wiki/public/admin?uri=admin/tag');
+        exit();
+    }else{
+        echo "error de update";
+    }
+}
+
+
 
     
    

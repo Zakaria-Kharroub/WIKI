@@ -50,6 +50,8 @@
 
                             </td>   
                         </tr>
+
+                        
                         <!-- update modal -->
                         <div class="modal fade" id="updateModal<?php echo $categorie->category_id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">

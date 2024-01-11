@@ -87,6 +87,30 @@ public function ajouterTags(){
     }
 }
 
+public function deleteTag($id){
+    $adminModel = new \App\Model\AdminModel();
+    $adminModel->setIdTag($id);
+    if($adminModel->deleteTag()){
+        header('Location: /wiki/public/admin?uri=admin/tag');
+        exit();
+    }
+}
+
+
+public function updateTag($id){
+    if (isset($_POST['submit'])){
+        $tag_name = $_POST['tag_name'];
+        $adminModel = new \App\Model\AdminModel();
+        $adminModel->setIdTag($id);
+        $adminModel->setTagName($tag_name);
+        if($adminModel->updateTag()){
+            header('Location: /wiki/public/admin?uri=admin/tag');
+            exit();
+        }
+        
+    } 
+}
+
 
 
 
