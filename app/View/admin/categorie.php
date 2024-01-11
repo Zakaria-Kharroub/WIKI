@@ -43,7 +43,8 @@
                             <td><?php echo $categorie->category_name; ?></td> 
                             <td>
                                 <button class='btn btn-primary'>edit</button>
-                                <button class='btn btn-danger'>delete</button>
+                                <a href='./admin/deleteCategorie/<?php echo $categorie->category_id; ?>' class='btn btn-danger'>delete</a>
+
                             </td>   
                         </tr>
                         <?php endforeach; ?>

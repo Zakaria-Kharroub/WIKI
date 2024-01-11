@@ -50,6 +50,15 @@ public function ajouterCategories(){
     }
 }
 
+public function deleteCategorie($id){
+    $adminModel = new \App\Model\AdminModel();
+    $adminModel->setIdCategory($id);
+    if($adminModel->deleteCategorie()){
+        header('Location: /wiki/public/admin?uri=admin/categorie');
+        exit();
+    }
+}
+
 
 
 

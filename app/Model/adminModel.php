@@ -10,6 +10,13 @@ class adminModel extends HomeModel{
     protected $id_category; 
     protected $category_name;
 
+    public function getIdCategory(){
+        return $this->id_category;
+    }
+    public function setIdCategory($id_category){
+        $this->id_category=$id_category;
+    }
+
     public function getCategoryName(){
         return $this->category_name;
     }
@@ -57,6 +64,18 @@ class adminModel extends HomeModel{
     //         echo "error de ajouter";
     //     }
     // }
+
+    public function deleteCategorie(){
+        $sql = "DELETE FROM `categories` WHERE category_id = ?";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute([$this->getIdCategory()]);
+        if($stmt){
+            header('Location: /wiki/public/admin?uri=admin/categorie');
+            exit();
+        }else{
+            echo "error de delete";
+        }
+    }
 
 
 

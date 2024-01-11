@@ -47,10 +47,11 @@ class Router{
         if (isset($uri[2])) {
             $param = array_values($uri);
             $this->param = $param;
+        } else {
+            $this->param = [];
         }
 
         call_user_func_array([$object,$this->method],$this->param);
-        // call_user_func_array([$this->controller,$this->method],$this->param);
       
         
     }
