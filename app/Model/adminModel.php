@@ -77,6 +77,18 @@ class adminModel extends HomeModel{
         }
     }
 
+    public function updateCategorie(){
+        $sql = "UPDATE `categories` SET `category_name`=? WHERE category_id = ?";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute([$this->getCategoryName(),$this->getIdCategory()]);
+        if($stmt){
+            header('Location: /wiki/public/admin?uri=admin/categorie');
+            exit();
+        }else{
+            echo "error de update";
+        }
+    }
+
 
 
     

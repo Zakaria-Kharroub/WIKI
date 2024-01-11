@@ -21,7 +21,7 @@
                 </div>
 
 
-                <!-- button modal -->
+                <!-- button ajouter modal -->
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">ajouter categorie</button>
 
 
@@ -42,12 +42,37 @@
                             <td><?php echo $categorie->category_id; ?></td>
                             <td><?php echo $categorie->category_name; ?></td> 
                             <td>
-                                <button class='btn btn-primary'>edit</button>
+
+                           
+                            <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $categorie->category_id; ?>">update</button>
                                 <a href='./admin/deleteCategorie/<?php echo $categorie->category_id; ?>' class='btn btn-danger'>delete</a>
+
 
                             </td>   
                         </tr>
+                        <!-- update modal -->
+                        <div class="modal fade" id="updateModal<?php echo $categorie->category_id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">update Categorie</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="./admin/updateCategorie/<?php echo $categorie->category_id; ?>" method="POST">
+                                        <div class="modal-body">
+                                            <input type="text" name="category_name"  class="form-control" placeholder="entrez le nom de categorie" value="<?php echo $categorie->category_name; ?>" >
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name='submit' class="btn btn-primary">enregistrer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <?php endforeach; ?>
+                        
                     </tbody>
                 </table>
 
@@ -58,17 +83,22 @@
 
 
 
-    <!-- Modal -->
+
+
+
+
+
+<!-- Modal ajouter  -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ajouter categorie</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="./admin/ajouterCategories" method="POST">
       <div class="modal-body">
-        <label for="name" class='p-2'>name categorie</label>
+        <!-- <label for="name" class='p-2'>name categorie</label> -->
         <input type="text" name="category_name"  class="form-control" placeholder="entrez le nom de categorie" >
         
       </div>
@@ -79,6 +109,15 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
 
      <!-- bootstrap cdn -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">

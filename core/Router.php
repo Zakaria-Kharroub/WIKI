@@ -50,7 +50,6 @@ class Router{
         } else {
             $this->param = [];
         }
-
         call_user_func_array([$object,$this->method],$this->param);
       
         
