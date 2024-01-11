@@ -35,7 +35,7 @@
                         <tr>
                             <td><?php echo $wiki->title; ?></td>
                             <td>Lorem</td>
-                            <td><?php echo $wiki->author_name; ?></td>
+                            <td></td>
                             <td><?php echo $wiki->category_name; ?></td>
                             <td><?php echo $wiki->date_create; ?></td>
                             <td><?php echo $wiki->etat; ?></td>

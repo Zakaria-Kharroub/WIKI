@@ -53,7 +53,7 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<li><a class="dropdown-item" href="#">profile</a></li>
-							<li><a class="dropdown-item" href="#">add wiki</a></li>
+							<li><a class="dropdown-item" href="?uri=/author">add wiki</a></li>
 							<li><a class="dropdown-item" href="?uri=/logout/logout">Log out</a></li>
 						</ul>
 					</div>

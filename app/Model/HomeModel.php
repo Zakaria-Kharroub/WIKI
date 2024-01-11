@@ -104,7 +104,6 @@ class HomeModel{
         $stmt->execute();
         $tags = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $tags;
-
     }
 
 
