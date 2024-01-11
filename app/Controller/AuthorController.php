@@ -16,8 +16,8 @@ class AuthorController{
         
         include_once '../app/View/author.php';
     }
-
-    // crud wiki
+ 
+    /*--------- crd wiki ---------*/
 
     public function ajouterWikis(){
         if(isset($_POST['submit'])){
@@ -39,8 +39,31 @@ class AuthorController{
                 exit();
             }
         }
-
-
     }
+
+    public function deleteWiki($id){
+        $AuthorModel = new \App\Model\AuthorModel();
+        $AuthorModel->setId($id);
+        if($AuthorModel->deleteWiki()){
+            header('Location: /wiki/public/author?uri=author');
+            exit();
+        }
+    }
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

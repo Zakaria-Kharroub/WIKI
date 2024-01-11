@@ -125,59 +125,12 @@ public function getTags(){
 
 
 /*------------------- crud wiki -------------------*/
-// protected $tag = [];
-// public function getTagId(){
-//     return $this->tag_id;
-// }
-// public function setTagId($tag_id){
-//     $this->tag_id=$tag_id;
-// }
-// public function getTag() {
-//     return $this->tag;
-// }
 
-
-// public function ajouterWiki(){
-//     $sql = "INSERT INTO wikis (title, description, author_id, category_id, date_create, etat) VALUES (?, ?, ?, ?, NOW(), ?)";
-//     $stmt = $this->db->getConnection()->prepare($sql);
-//     $result = $stmt->execute([$this->getTitle(), $this->getDescription(), $_SESSION['id'], $this->getCategoryId(), $this->getEtat()]);
-    
-//     if($result){
-//         $wikiId = $this->db->getConnection()->lastInsertId();
-//         foreach ($this->getTag() as $tagId) {
-//             $sql = "INSERT INTO wiki_tags (wiki_id, tag_id) VALUES (?, ?)";
-//             $stmt = $this->db->getConnection()->prepare($sql);
-//             $stmt->execute([$wikiId, $tagId]);
-//         }
-//         return true;
-//     } else {
-//         echo "Erreur lors de l'ajout.";
-//     }
-// }
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-// ... autres propriétés
-
-
-// ... autres méthodes
-
+//---------- pour tags
 // geter
 public function getTagId(){
     return $this->tag_id;
 }
-
 // seter
 public function setTagId($tag_id){
     $this->tag_id = $tag_id;
@@ -198,9 +151,27 @@ public function ajouterWiki(){
         }
         return true;
     } else {
-        echo "Erreur lors de l'ajout.";
+        echo "erreur lors de l'ajout.";
     }
 }
+
+
+public function deleteWiki(){
+    $sql = "DELETE FROM wikis WHERE wiki_id = ?";
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $result = $stmt->execute([$this->getId()]);
+    if($result){
+        return true;
+    } else {
+        echo "error de suppression.";
+    }
+}
+
+
+
+
+
+
 
 
 

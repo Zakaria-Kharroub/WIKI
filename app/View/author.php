@@ -46,7 +46,9 @@
                     <td><?php echo $wiki->tag_names; ?></td>
                     <td>
                         <a href="?uri=/wiki/edit/<?php echo $wiki->wiki_id; ?>" class="btn btn-primary">edit</a>
-                        <a href="?uri=/wiki/delete/<?php echo $wiki->wiki_id; ?>" class="btn btn-danger">delete</a>
+
+                        <a href='./Author/deleteWiki/<?php echo $wiki->wiki_id; ?>' class='btn btn-danger'>delete</a>
+
                     </td>
 
                     
@@ -95,23 +97,16 @@
 
 
         <h4>choisir tags</h4>
-<div style="height:120px;overflow:scroll;">
-    <?php foreach ($tags as $tag): ?>
-        <div class="form-check mb-2" >
-            <input class="form-check-input" type="checkbox" name="tag_id[]" value="<?php echo $tag->tag_id ; ?>">
-            <label class="form-check-label" for="tag_id[]">
-                <?php echo $tag->tag_name; ?>
-            </label>
-        </div>
-    <?php endforeach; ?>
-</div>
+            <div style="height:120px;overflow:scroll;">
 
+                <?php foreach ($tags as $tag): ?>
 
-
-
-
-
-
+                    <div class="form-check mb-2" >
+                        <input class="form-check-input" type="checkbox" name="tag_id[]" value="<?php echo $tag->tag_id ; ?>">
+                        <label class="form-check-label" for="tag_id[]"> <?php echo $tag->tag_name; ?> </label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
       </div>
       <div class="modal-footer">
