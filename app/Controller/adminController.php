@@ -114,6 +114,23 @@ public function updateTag($id){
 
 
 
+/*---------- update etat pour archiver-----------------*/
+public function updateEtat($id){
+    if (isset($_POST['submit'])){
+        $etat = $_POST['category_id'];
+        $adminModel = new \App\Model\AdminModel();
+        $adminModel->setId($id);
+        $adminModel->setEtat($etat);
+        if($adminModel->updateEtat()){
+            header('Location: /wiki/public/admin?uri=admin/wikiAdmin');
+            exit();
+        }
+        
+    } 
+}
+
+
+
 
 
 

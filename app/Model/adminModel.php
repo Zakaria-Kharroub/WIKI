@@ -48,10 +48,26 @@ class adminModel extends HomeModel{
 
 
     // methods
+    // public function sameWiki(){
+    //     $wikis = $this->getWiki();
+    //     return $wikis;
+    // }
+
+
     public function sameWiki(){
-        $wikis = $this->getWiki();
+        $sql = "SELECT wikis.*, utilisateurs.username AS author_name, categories.category_name
+                FROM wikis
+                JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id
+                JOIN categories ON wikis.category_id = categories.category_id";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        
+        $wikis = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $wikis;
     }
+
+
+
     public function sameCategories(){
         $categories = $this->getCategories();
         return $categories;
@@ -76,26 +92,14 @@ class adminModel extends HomeModel{
 
     }
 
-    /*----- other code pour resoudre le problem de ajouter categorie----- */
-    // public function ajouterCategorie(){
-    //     $sql="INSERT INTO `categories`( `category_name`) VALUES (?)";
-    //     $stmt = $this->db->getConnection()->prepare($sql);
-    //     $stmt->execute([$this->getCategoryName()]);
-    //     if($stmt){
-    //        header('Location: /wiki/public/admin?uri=admin/categorie');
-    //        exit();
-    //     }else{
-    //         echo "error de ajouter";
-    //     }
-    // }
+
 
     public function deleteCategorie(){
         $sql = "DELETE FROM `categories` WHERE category_id = ?";
         $stmt = $this->db->getConnection()->prepare($sql);
         $stmt->execute([$this->getIdCategory()]);
         if($stmt){
-            header('Location: /wiki/public/admin?uri=admin/categorie');
-            exit();
+            return true;
         }else{
             echo "error de delete";
         }
@@ -106,8 +110,7 @@ class adminModel extends HomeModel{
         $stmt = $this->db->getConnection()->prepare($sql);
         $stmt->execute([$this->getCategoryName(),$this->getIdCategory()]);
         if($stmt){
-            header('Location: /wiki/public/admin?uri=admin/categorie');
-            exit();
+            return true;
         }else{
             echo "error de update";
         }
@@ -136,8 +139,7 @@ public function deleteTag(){
     $stmt = $this->db->getConnection()->prepare($sql);
     $stmt->execute([$this->getIdTag()]);
     if($stmt){
-        header('Location: /wiki/public/admin?uri=admin/tag');
-        exit();
+        return true;
     }else{
         echo "error de delete";
     }
@@ -148,12 +150,22 @@ public function updateTag(){
     $stmt = $this->db->getConnection()->prepare($sql);
     $stmt->execute([$this->getTagName(),$this->getIdTag()]);
     if($stmt){
-        header('Location: /wiki/public/admin?uri=admin/tag');
-        exit();
+        return true;
     }else{
         echo "error de update";
     }
 }
 
+
+public function updateEtat(){
+    $sql = "UPDATE `wikis` SET `etat`=? WHERE wiki_id = ?";
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->execute([$this->getEtat(),$this->getId()]);
+    if($stmt){
+        return true;
+    }else{
+        echo "error de update";
+    }
+}
 
 }
