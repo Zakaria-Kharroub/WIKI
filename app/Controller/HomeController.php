@@ -22,6 +22,13 @@ class HomeController {
     public function register(){
         include_once '../app/View/register.php';
     }
+
+    public function author(){
+        include_once '../app/View/author.php';
+    }
+
+
+
     public function organisateur(){
         include_once '../app/View/organisateurDash.php';
     }
@@ -31,6 +38,7 @@ class HomeController {
     public function categorie(){
         include_once '../app/View/categorie.php';
     }
+  
 
 
 
