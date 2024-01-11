@@ -170,6 +170,33 @@ public function deleteWiki(){
 
 
 
+// public function updateWiki(){
+//     $sql = "UPDATE wikis SET title = ?, description = ?, category_id = ?, date_create = ? WHERE wiki_id = ?";
+//     $stmt = $this->db->getConnection()->prepare($sql);
+//     $result = $stmt->execute([$this->getTitle(), $this->getDescription(), $this->getCategoryId(), $this->getDateCreate(), $this->getWikiId()]);
+//     if($result){
+//         $wikiId = $this->db->getConnection()->lastInsertId();
+//         foreach ($this->getTagId() as $tagId) {
+//             $sql = "INSERT INTO wiki_tags (wiki_id, tag_id) VALUES (?, ?)";
+//             $stmt = $this->db->getConnection()->prepare($sql);
+//             $stmt->execute([$wikiId, $tagId]);
+//         }
+//         return true;
+//     } else {
+//         echo "erreur lors de la mise à jour.";
+//     }
+  
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 

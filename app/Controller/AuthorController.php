@@ -52,6 +52,37 @@ class AuthorController{
 
 
 
+
+    // public function updateWiki($id){
+    //     if(isset($_POST['sumit'])){
+    //         $title = $_POST['title'];
+    //         $description= $_POST['description'];
+    //         $category_id = $_POST['category_id'];
+
+    //         $tag_id = $_POST['tag_id'];
+
+    //         $AuthorModel = new \App\Model\AuthorModel();
+
+    //         $AuthorModel->setId($id);
+    //         $AuthorModel->setTitle($title);
+    //         $AuthorModel->setDescription($description);
+    //         $AuthorModel->setCategoryId($category_id);
+    //         $AuthorModel->setTagId($tag_id);
+    //         var_dump($AuthorModel);
+    //         die();
+    //         if($AuthorModel->updateWiki()){
+    //             header('Location: /wiki/public/author?uri=author');
+    //             exit();
+    //         }
+
+
+    //     }
+    // }
+
+
+
+
+
   
 
 
