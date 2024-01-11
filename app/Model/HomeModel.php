@@ -80,7 +80,8 @@ class HomeModel{
         $sql = "SELECT wikis.*, utilisateurs.username AS author_name, categories.category_name
                 FROM wikis
                 JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id
-                JOIN categories ON wikis.category_id = categories.category_id";
+                JOIN categories ON wikis.category_id = categories.category_id
+                WHERE wikis.etat = 'oui'";
         
         $stmt = $this->db->getConnection()->prepare($sql);
         $stmt->execute();

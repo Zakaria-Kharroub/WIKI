@@ -35,10 +35,38 @@
                         <tr>
                             <td><?php echo $wiki->title; ?></td>
                             <td>Lorem</td>
-                            <td></td>
+                            <td><?php echo $wiki->author_name; ?></td>
                             <td><?php echo $wiki->category_name; ?></td>
                             <td><?php echo $wiki->date_create; ?></td>
-                            <td><?php echo $wiki->etat; ?></td>
+                            <td>
+
+                            <form class="d-flex" action="./admin/updateEtat/<?php echo $wiki->wiki_id; ?>" method="POST">
+                            <select name="category_id" class="form-select mb-2" aria-label="Default select example">
+                                <option <?php echo ($wiki->etat == 'oui') ? 'selected' : ''; ?>>oui</option>
+                                <option <?php echo ($wiki->etat == 'non') ? 'selected' : ''; ?>>non</option>
+                            </select>
+                            <button type="submit" name='submit' class="btn btn-primary ms-2">save</button>
+                            </form>
+
+
+                            
+
+                           
+
+
+
+                           
+                            </td>
+
+
+
+                            
+
+
+
+
+
+
                         </tr>
                         <?php endforeach; ?>
                        

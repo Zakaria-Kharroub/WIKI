@@ -44,7 +44,7 @@
                             <td>
 
                            
-                            <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $categorie->category_id; ?>">update</button>
+                                <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $categorie->category_id; ?>">update</button>
                                 <a href='./admin/deleteCategorie/<?php echo $categorie->category_id; ?>' class='btn btn-danger'>delete</a>
 
 
