@@ -37,7 +37,7 @@ class adminController{
 
     }
 
-    // old code 
+/*---------- start CRUD categories -----------------*/
 public function ajouterCategories(){
     if(isset($_POST['submit'])){
         $category_name = $_POST['category_name'];
@@ -49,7 +49,19 @@ public function ajouterCategories(){
         }
     }
 }
-
+public function updateCategorie($id){
+    if (isset($_POST['submit'])){
+        $category_name = $_POST['category_name'];
+        $adminModel = new \App\Model\AdminModel();
+        $adminModel->setIdCategory($id);
+        $adminModel->setCategoryName($category_name);
+        if($adminModel->updateCategorie()){
+            header('Location: /wiki/public/admin?uri=admin/categorie');
+            exit();
+        }
+        
+    } 
+}
 public function deleteCategorie($id){
     $adminModel = new \App\Model\AdminModel();
     $adminModel->setIdCategory($id);
@@ -58,6 +70,8 @@ public function deleteCategorie($id){
         exit();
     }
 }
+/*---------- end CRUD categories -----------------*/
+
 
 
 
