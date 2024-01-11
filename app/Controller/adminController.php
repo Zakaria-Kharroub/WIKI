@@ -74,6 +74,20 @@ public function deleteCategorie($id){
 
 
 
+/*---------- start CRUD tags -----------------*/
+public function ajouterTags(){
+    if(isset($_POST['submit'])){
+        $tag_name = $_POST['tag_name'];
+        $adminModel = new \App\Model\AdminModel();
+        $adminModel->setTagName($tag_name);
+        if($adminModel->ajouterTag()){
+            header('Location: /wiki/public/admin?uri=admin/tag');
+            exit();
+        }
+    }
+}
+
+
 
 
 

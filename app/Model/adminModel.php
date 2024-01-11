@@ -9,21 +9,45 @@ class adminModel extends HomeModel{
     
     protected $id_category; 
     protected $category_name;
+    protected $tag_id;
+    protected $tag_name;
 
+    // geters
+    // ----categorie
     public function getIdCategory(){
         return $this->id_category;
     }
-    public function setIdCategory($id_category){
-        $this->id_category=$id_category;
-    }
-
     public function getCategoryName(){
         return $this->category_name;
+    }
+
+    // ---- tags
+    public function getIdTag(){
+        return $this->tag_id;
+    }
+    public function getTagName(){
+        return $this->tag_name;
+    }
+
+    // seters
+    // ---- categorie
+    public function setIdCategory($id_category){
+        $this->id_category=$id_category;
     }
     public function setCategoryName($category_name){
         $this->category_name=$category_name;
     }
+    // ---- tags
+    public function setIdTag($tag_id){
+        $this->tag_id=$tag_id;
+    }
+    public function setTagName($tag_name){
+        $this->tag_name=$tag_name;
+    }
 
+
+
+    // methods
     public function sameWiki(){
         $wikis = $this->getWiki();
         return $wikis;
@@ -38,7 +62,7 @@ class adminModel extends HomeModel{
     }
 
 
-/*------------- crud categories -----------------*/
+/*------------- start crud categories -----------------*/
     // old code 
     public function ajouterCategorie(){
         $sql="INSERT INTO `categories`( `category_name`) VALUES (?)";
@@ -88,6 +112,23 @@ class adminModel extends HomeModel{
             echo "error de update";
         }
     }
+
+/*-------------end crud categories -----------------*/
+
+
+
+
+/*------------- crud tags -----------------*/
+public function ajoutertag(){
+    $sql="INSERT INTO `tags`( `tag_name`) VALUES (?)";
+    $stmt = $this->db->getConnection()->prepare($sql);
+    $stmt->execute([$this->getTagName()]);
+    if($stmt){
+       return true;
+    }else{
+        echo "error de ajouter";
+    }
+}
 
 
 
