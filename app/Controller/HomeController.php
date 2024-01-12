@@ -41,6 +41,14 @@ class HomeController {
   
 
 
+    public function wikiDetail($id){
+        $HomeModel = new \App\Model\HomeModel();
+        $wiki = $HomeModel->getWikiById($id);
+        $categories = $HomeModel->getCategories();
+        include_once '../app/View/wikiDetail.php';
+    }
+
+
 
 
 
