@@ -76,7 +76,9 @@
             <p>ajouter a : <em style="color:brown;"><?php echo $wiki->date_create; ?></em><br>
             par : <b style="color:brown;"><?php echo $wiki->author_name; ?></b>
             </p>
-            <button class="btn btn-danger">voir</button>
+            id : <?php echo $wiki->wiki_id; ?><br>
+            
+            <a class="btn btn-danger" href="?uri=home/wikiDetail/<?php echo $wiki->wiki_id; ?>">Voir plus</a>
 					</div>
 				</div>
 		</div>
