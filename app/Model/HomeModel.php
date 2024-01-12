@@ -108,4 +108,38 @@ class HomeModel{
     }
 
 
+
+
+
+    /*----------- requette simpl pour afficher just les donne de table wiki------*/
+    // public function getWikiById($id){
+    //     $sql = "SELECT * FROM wikis WHERE wiki_id = ?";
+    //     $stmt = $this->db->getConnection()->prepare($sql);
+    //     $stmt->execute([$id]);
+    //     return $stmt->fetch(PDO::FETCH_OBJ);
+    // }
+
+
+
+    /*----------- requette avec join pour afficher author name et les tag et les tags------*/
+
+    public function getWikiById($id){
+        $sql = "SELECT wikis.*, utilisateurs.username AS author_name, categories.category_name, GROUP_CONCAT(tags.tag_name) AS tag_names
+                FROM wikis
+                JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id
+                JOIN categories ON wikis.category_id = categories.category_id
+                LEFT JOIN wiki_tags ON wikis.wiki_id = wiki_tags.wiki_id
+                LEFT JOIN tags ON wiki_tags.tag_id = tags.tag_id
+                WHERE wikis.wiki_id = ?
+                GROUP BY wikis.wiki_id";
+    
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
+
+
+
 }
