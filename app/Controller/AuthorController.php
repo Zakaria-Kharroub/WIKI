@@ -41,6 +41,8 @@ class AuthorController{
         }
     }
 
+
+
     public function deleteWiki($id){
         $AuthorModel = new \App\Model\AuthorModel();
         $AuthorModel->setId($id);
@@ -53,31 +55,48 @@ class AuthorController{
 
 
 
-    // public function updateWiki($id){
-    //     if(isset($_POST['sumit'])){
-    //         $title = $_POST['title'];
-    //         $description= $_POST['description'];
-    //         $category_id = $_POST['category_id'];
-
-    //         $tag_id = $_POST['tag_id'];
-
-    //         $AuthorModel = new \App\Model\AuthorModel();
-
-    //         $AuthorModel->setId($id);
-    //         $AuthorModel->setTitle($title);
-    //         $AuthorModel->setDescription($description);
-    //         $AuthorModel->setCategoryId($category_id);
-    //         $AuthorModel->setTagId($tag_id);
-    //         var_dump($AuthorModel);
-    //         die();
-    //         if($AuthorModel->updateWiki()){
-    //             header('Location: /wiki/public/author?uri=author');
-    //             exit();
-    //         }
+    
 
 
-    //     }
-    // }
+    public function updateWiki($id){
+        // var_dump($id);
+        // die();
+
+        if(isset($_POST['submit'])){
+            
+            // var_dump($_POST);
+            // die();
+            $title = $_POST['title'];
+            $description= $_POST['description'];
+            $category_id = $_POST['category_id'];
+            $date_create = $_POST['date_create'];
+            
+            $tag_id = $_POST['tag_id'];
+
+            $AuthorModel = new \App\Model\AuthorModel();
+
+            $AuthorModel->setId($id);
+            $AuthorModel->setTitle($title);
+            $AuthorModel->setDescription($description);
+            $AuthorModel->setCategoryId($category_id);
+            $AuthorModel->setTagId($tag_id);
+            // var_dump($tag_id);
+            // die();
+            if($AuthorModel->updateWiki()){
+                header('Location: /wiki/public/author?uri=author');
+                exit();
+            }
+
+
+        }
+    }
+    
+
+
+
+
+
+
 
 
 

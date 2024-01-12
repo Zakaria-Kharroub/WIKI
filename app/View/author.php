@@ -53,6 +53,9 @@
                 </tr>
 
 
+                
+
+
 
                 <!-- update modal -->
                 <div class="modal fade" id="updateModal<?php echo $wiki->wiki_id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,7 +81,8 @@
 
                                             <label for="categorie" style="float:left;" class='p-2'>categorie</label>
                                             <select name="category_id" class="form-select mb-1" aria-label="Default select example">
-                                                <option selected><?php echo $categorie->category_name; ?></option>
+                                                <option disabled selected value="<?php echo $wiki->category_id; ?>"><?php echo $wiki->category_name; ?></option>
+                                                
                                                 <?php foreach ($categories as $categorie):?>
                                                     <option value="<?php echo $categorie->category_id ; ?>"><?php echo $categorie->category_name; ?></option>
                                                 <?php endforeach; ?>
@@ -88,6 +92,10 @@
                                             <label for="name" class='p-2'>tags</label>
 
                                             <div style="height:120px;overflow:scroll;">
+
+
+
+
                                             <?php foreach ($tags as $tag): ?>
 
                                                 <div class="form-check mb-2" >
@@ -95,6 +103,9 @@
                                                     <label class="form-check-label" for="tag_id[]"> <?php echo $tag->tag_name; ?> </label>
                                                 </div>
                                             <?php endforeach; ?>
+
+
+
                                             </div>
 
                                         </div>
