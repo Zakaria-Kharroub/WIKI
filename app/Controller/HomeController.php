@@ -51,5 +51,21 @@ class HomeController {
 
 
 
+    public function searchtwo() {
+        if (isset($_GET['search'])) {
+            $searchTerm = $_GET['search'];
+            $wiki = new \App\Model\HomeModel();
+            $searchResults = $wiki->searchByName($searchTerm);
+        if($searchResults){
+            include_once '../app/View/wikiView.php';
+        }
+    
+      }
+    }
+
+
+
+
+
 
 }
