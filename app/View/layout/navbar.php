@@ -23,7 +23,7 @@
 
 					<li class="nav-item" style="padding-top: 5px;">
                         <!-- <input class="search-input form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-						<input type="text"  id="searchInput" oninput="search()" placeholder="Search">
+						<input class="search-input form-control me-2" type="text"  id="searchInput" oninput="search()" placeholder="Search">
 					</li>
 
 
