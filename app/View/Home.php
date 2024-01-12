@@ -59,7 +59,7 @@
 
 
 
-<div id='wiki'>
+
 
 <?php foreach ($wikis as $wiki):?>
     <section class="about m-5" id="about">
@@ -86,7 +86,6 @@
 </section>
 <?php endforeach; ?>
 
-</div>
 
 
 
@@ -100,24 +99,7 @@
 
 
 
-<script>
 
-function search() {
-               
-               let input = document.getElementById("searchInput").value;
-               let url = `?uri=Home/searchtwo&search=${input}`;
-
-               let xml = new XMLHttpRequest();
-               xml.onreadystatechange = function () {
-                   if (this.readyState == 4 && this.status == 200) {
-                       document.getElementById("wiki").innerHTML = xml.responseText;
-                   }
-               };
-               xml.open("GET", url, true);
-               xml.send();
-         
-       }
-</script>
 
 
 
