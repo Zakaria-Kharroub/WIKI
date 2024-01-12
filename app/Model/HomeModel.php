@@ -141,5 +141,24 @@ class HomeModel{
 
 
 
+    public function searchByName($searchTerm) {
+        $conn = $this->db->getConnection();
+        $sql = "SELECT wikis.*, utilisateurs.username AS author_name
+        FROM wikis
+        JOIN utilisateurs ON wikis.author_id = utilisateurs.user_id
+        WHERE wikis.title LIKE ? AND wikis.etat = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(["%$searchTerm%", 'oui']);
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result) {
+            return $result;
+        }
+    }
+
+
+    
+
+
 
 }

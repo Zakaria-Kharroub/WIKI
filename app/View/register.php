@@ -29,20 +29,24 @@
               <div class="col-12">
                 <label for="name" class="form-label">Username <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="username" id="name" placeholder="entrez username" required>
+                <p class='message-error-username text-danger ps-1' style="display:none;">username Obligatoire</p>
               </div>
 
               <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="ali@gmail.com" required>
+                <p class='message-error-email text-danger ps-1' style="display:none;">email Obligatoire</p>
               </div>
+
               <div class="col-12">
                 <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                 <input type="password" class="form-control" name="password" id="password"  placeholder="entrez le mot de pass" required>
+                <p class='message-error-password text-danger ps-1' style="display:none;">password Obligatoire</p>
               </div>
-              <!-- <input type="hidden" name="id_role" value="2"> -->
+              
               <div class="col-12">
                 <div class="d-grid">
-                  <button class="btn btn-lg btn-danger" type="submit" name="submit">register</button>
+                  <button class="btn btn-lg btn-danger" class='bnt-tegister' type="submit" name="submit">register</button>
                 </div>
               </div>
             </div>
@@ -64,6 +68,21 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+
+  // validation js
+
+  
+
+  
+
+
+
+
+</script>
 
 
 
