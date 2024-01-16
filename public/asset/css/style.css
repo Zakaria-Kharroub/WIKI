@@ -114,9 +114,9 @@ body {
 
 
 
-/* end  popup */
 /* ---------- end FAQ ------------- */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+
 	.carousel-caption {
 		bottom: 370px;
 	}
@@ -129,11 +129,13 @@ body {
 	.img-area img {
 		width: 100%;
 	}
+
 }
 @media only screen and (max-width: 767px) {
 	.navbar-nav {
 		text-align: center;
 	}
+	
 
 	.footer-img{
 		display: none;
@@ -148,7 +150,6 @@ body {
 	
 }
 
-/* ____________________________________thes parte it's for desplay page*/ 
 
 
 

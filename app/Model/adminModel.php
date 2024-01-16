@@ -12,7 +12,6 @@ class adminModel extends HomeModel{
     protected $tag_id;
     protected $tag_name;
 
-    // geters
     // ----categorie
     public function getIdCategory(){
         return $this->id_category;
@@ -47,12 +46,6 @@ class adminModel extends HomeModel{
 
 
 
-    // methods
-    // public function sameWiki(){
-    //     $wikis = $this->getWiki();
-    //     return $wikis;
-    // }
-
 
     public function sameWiki(){
         $sql = "SELECT wikis.*, utilisateurs.username AS author_name, categories.category_name
@@ -75,6 +68,14 @@ class adminModel extends HomeModel{
     public function sameTags(){
         $tags = $this->getTags();
         return $tags;
+    }
+
+    public function getUser(){
+        $sql = "SELECT * FROM utilisateurs";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $users;
     }
 
 
@@ -167,5 +168,11 @@ public function updateEtat(){
         echo "error de update";
     }
 }
+
+
+
+
+
+
 
 }

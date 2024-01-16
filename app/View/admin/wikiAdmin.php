@@ -41,7 +41,7 @@
                             <td>
 
                             <form class="d-flex" action="./admin/updateEtat/<?php echo $wiki->wiki_id; ?>" method="POST">
-                            <select name="category_id" class="form-select mb-2" aria-label="Default select example">
+                            <select name="category_id" class="form-select mb-2 select-etat-wiki" aria-label="Default select example">
                                 <option <?php echo ($wiki->etat == 'oui') ? 'selected' : ''; ?>>oui</option>
                                 <option <?php echo ($wiki->etat == 'non') ? 'selected' : ''; ?>>non</option>
                             </select>
@@ -49,22 +49,7 @@
                             </form>
 
 
-                            
-
-                           
-
-
-
-                           
                             </td>
-
-
-
-                            
-
-
-
-
 
 
                         </tr>
@@ -74,6 +59,21 @@
                 </table>
             </div>
     </section>
+
+
+<script>
+    let selectWikis = document.querySelectorAll('.select-etat-wiki');
+
+    selectWikis.forEach(function(selectWiki) {
+         if (selectWiki.value === 'oui') {
+            selectWiki.classList.add('bg-success');
+            
+         }else{
+
+             selectWiki.classList.add('bg-danger');
+        }
+    });
+</script>
     
 
      <!-- bootstrap cdn -->
