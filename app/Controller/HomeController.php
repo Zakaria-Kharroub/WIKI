@@ -29,9 +29,7 @@ class HomeController {
 
 
 
-    public function organisateur(){
-        include_once '../app/View/organisateurDash.php';
-    }
+
     public function logout(){
         header('location:?uri=home');
     }
@@ -62,6 +60,7 @@ class HomeController {
     
       }
     }
+    
 
 
 

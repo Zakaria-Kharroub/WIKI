@@ -7,7 +7,6 @@ class Database {
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    // private $database = "mywikis";
     private $database = "wikitest";
 
     private $conn;

@@ -5,7 +5,12 @@ namespace App\Controller;
 class adminController{
 
     public function index(){
+        $adminModel = new \App\Model\AdminModel();
+        $wikis = $adminModel->sameWiki();
+        $categories = $adminModel->sameCategories();
+        
         include_once '../app/View/admin/admin.php';
+        
     }
 
 

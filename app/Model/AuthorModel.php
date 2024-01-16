@@ -24,7 +24,7 @@ class AuthorModel{
     }
 
 
-    // geters
+    
     public function getId(){
         return $this->id;
     }
@@ -51,7 +51,7 @@ class AuthorModel{
     }
 
 
-    // seters
+
 
     public function setId($id){
         $this->id=$id;
@@ -151,7 +151,7 @@ public function ajouterWiki(){
         }
         return true;
     } else {
-        echo "erreur lors de l'ajout.";
+        echo "error de ajouter.";
     }
 }
 
@@ -170,37 +170,16 @@ public function deleteWiki(){
 
 
 
-// public function updateWiki(){
-//     $sql = "UPDATE wikis SET title = ?, description = ?, category_id = ? WHERE wiki_id = ?";
-//     $stmt = $this->db->getConnection()->prepare($sql);
-//     $result = $stmt->execute([$this->getTitle(), $this->getDescription(), $this->getCategoryId(), $this->getId()]);
-//     if($result){
-//         // $wikiId = $this->db->getConnection()->lastInsertId();
-//         foreach ($this->getTagId() as $tagId) {
-
-//             $sql = "INSERT INTO wiki_tags (wiki_id, tag_id) VALUES (?, ?)";
-//             $stmt = $this->db->getConnection()->prepare($sql);
-//             $stmt->execute([$this->getId(), $tagId]);
-//         }
-//         return true;
-//     } else {
-//         echo "erreur lors de la mise à jour.";
-//     }
-  
-// }
-
 public function updateWiki(){
     $sqlUpdate = "UPDATE wikis SET title = ?, description = ?, category_id = ? WHERE wiki_id = ?";
     $stmtUpdate = $this->db->getConnection()->prepare($sqlUpdate);
     $resultUpdate = $stmtUpdate->execute([$this->getTitle(), $this->getDescription(), $this->getCategoryId(), $this->getId()]);
 
     if ($resultUpdate) {
-        // Delete existing tags for the wiki
         $sqlDeleteTags = "DELETE FROM wiki_tags WHERE wiki_id = ?";
         $stmtDeleteTags = $this->db->getConnection()->prepare($sqlDeleteTags);
         $stmtDeleteTags->execute([$this->getId()]);
 
-        // Insert new tags for the wiki
         foreach ($this->getTagId() as $tagId) {
             $sqlInsertTag = "INSERT INTO wiki_tags (wiki_id, tag_id) VALUES (?, ?)";
             $stmtInsertTag = $this->db->getConnection()->prepare($sqlInsertTag);

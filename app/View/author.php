@@ -22,7 +22,7 @@
     <table border="1" class=" container table table-striped table-hover table-bordered mt-3">
         <thead>
             <tr>
-                <th>id</th>
+                <!-- <th>id</th> -->
                 <th>title</th>
                 <th>content</th>
                 <th>category</th>
@@ -36,7 +36,7 @@
         <tbody>
             <?php foreach ($wikis as $wiki):?>
                 <tr>
-                    <td><?php echo $wiki->wiki_id; ?></td>
+                    
                     <td><?php echo $wiki->title; ?></td>
                     <td><?php echo $wiki->description;?></td>
                     <td><?php echo $wiki->category_name; ?></td>
@@ -185,6 +185,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 

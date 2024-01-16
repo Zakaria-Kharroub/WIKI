@@ -29,24 +29,24 @@
               <div class="col-12">
                 <label for="name" class="form-label">Username <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="username" id="name" placeholder="entrez username" required>
-                <p class='message-error-username text-danger ps-1' style="display:none;">username Obligatoire</p>
+                <p class='message-error-username text-danger ps-1' style="display:none;" onkeyup="validateName()">username Obligatoire</p>
               </div>
 
               <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="ali@gmail.com" required>
-                <p class='message-error-email text-danger ps-1' style="display:none;">email Obligatoire</p>
+                <input type="email" class="form-control" name="email" id="email" placeholder="ali@gmail.com"  onkeyup="validateEmail()" required>
+                <p class='message-error-email text-danger ps-1' style="display:none;">format de email invalid</p>
               </div>
 
               <div class="col-12">
                 <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                <input type="password" class="form-control" name="password" id="password"  placeholder="entrez le mot de pass" required>
-                <p class='message-error-password text-danger ps-1' style="display:none;">password Obligatoire</p>
+                <input type="password" class="form-control" name="password" id="password"  placeholder="entrez le mot de pass" onkeyup="validatePassword()" required>
+                <p class='message-error-password text-danger ps-1' style="display:none;">le mot de pass plus de trois char</p>
               </div>
               
               <div class="col-12">
                 <div class="d-grid">
-                  <button class="btn btn-lg btn-danger" class='bnt-tegister' type="submit" name="submit">register</button>
+                <button class="btn btn-lg btn-danger bnt-tegister" type="submit" name="submit" onclick="validateAllForm()" >Register</button>
                 </div>
               </div>
             </div>
@@ -73,7 +73,63 @@
 
 <script>
 
-  // validation js
+
+function validateName(){
+  let inputName= document.getElementById('name').value;
+  if(inputName='' || inputName.length<3){
+    document.querySelector('.message-error-username').style.display = 'block';
+    return false;
+  }else{
+    document.querySelector('.message-error-username').style.display = 'none';
+    return true;
+  }
+}
+
+function validateEmail() {
+  let inputEmail = document.getElementById('email').value;
+  let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  if (!emailRegex.test(inputEmail)) {
+    document.querySelector('.message-error-email').style.display = 'block';
+    return false;
+  } else {
+    document.querySelector('.message-error-email').style.display = 'none';
+    return true; 
+  }
+}
+
+function validatePassword(){
+  let inputPassword= document.getElementById('password').value;
+  if(inputPassword='' || inputPassword.length<3){
+    document.querySelector('.message-error-password').style.display = 'block';
+    return false;
+  }else{
+    document.querySelector('.message-error-password').style.display = 'none';
+    return true;
+  }
+}
+function validateAllForm() {
+    let isNameValid = validateName();
+    let isEmailValid = validateEmail();
+    let isPasswordValid = validatePassword();
+
+    if (isNameValid && isEmailValid && isPasswordValid) {
+      return true;
+    } else {
+      alert('form is invalid');
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+  
 
   
 
